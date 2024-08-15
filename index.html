@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+                body{
+                        background-color: rgb(96, 114, 251);
+                        height: 100vh;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        
+                }
+                .container{
+                        display: flex;
+                        flex-direction: column;
+                }
+                .labelfortabs{
+                        color: white;
+                        font-size: 2rem;
+                        margin-bottom: 10px;
+                        text-align: center;
+                }
+                #numberOfOpenTabs{
+                        height: 2rem;
+                        width: 5rem;
+                        align-self: center;
+                       text-align: center;
+                       font-size: medium;
+                       margin-bottom: 20px;
+                }
+                #dropDown{
+                        text-align: center;
+                        align-self: center;
+                        font-size: large;
+                        /* background-color: aquamarine; */
+                        margin-bottom: 10px;
+                        width: 15rem;
+                        height: 40px;
+                }
+                #domainName{
+                        text-align: center;
+                        align-self: center;
+                        font-size: large;
+                        /* background-color: aquamarine; */
+                        margin-bottom: 10px;
+                        width: 15rem;
+                        height: 40px;
+                }
+                #btn{
+                        width: 100px;
+                        height: 40px;
+                        align-self: center;
+                        margin-top: 50px;
+                        border-radius: 10px;
+                        font-size: large;
+                        box-shadow: 1px 1px 8px #494949;
+                        cursor: pointer;
+
+
+                }
+        </style>
+</head>
+<body>
+      <div id="container" class="container">
+
+        <p id="Message"></p>
+
+        <label for="numberOfOpenTabs" class="labelfortabs">Number of Tabs to be Opened</label>
+        <select id="numberOfOpenTabs">
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+        </select>
+
+        <select id="dropDown">
+                <option value="none">----Select Any <span>Target</span> Site-----</option>
+                <option value="newOldStamp">New Old Stamp</option>
+                <option value="tailorBrand">Tailor Brand</option>
+                <option value="dataImpulse">Data Impulse</option>
+        </select>
+        <input type="text" placeholder="Enter Your Blog Site" id="domainName"/>
+        <button id="btn">Search</button>
+      </div>  
+
+
+
+
+      <script>
+       const container = document.getElementById("container");
+       const domainName = document.getElementById("domainName");
+       const targetSite = document.getElementById("dropDown");
+       const message = document.getElementById("Message");
+       const totalTabs = document.getElementById("numberOfOpenTabs");
+
+       const button = document.getElementById("btn");
+
+       
+       const newOldStamp = "how to add signature in Gmail,"+
+       "how to make a signature in Gmail,how to add signature in Outlook, Outlook signature setup,"+
+       "signature generator, email signature,email signature examples, email signature templates, signature examples,email signature manager"
+       
+       const tailorBrand = "what is a registered agent, registered agent services, what is a statutory agent, what is a resident agent, choosing a registered agent for LLC, appoint a registered agent, how to choose a registered agent, what is an agent of process, registered agent, what is a registered agent, registered agent is a mandatory requirement, you have to appoint a registered agent,"+
+       "LLC for non-US residents, LLC for non-US citizens, LLC for non-residents, creating an LLC as a non-US citizen, how to start an LLC as a non-citizen,LLC taxes, pass-through taxation, how does LLC pay taxes,annual report for LLC, what is an annual report, annual report, annual reports can't be ignored,"+
+       "disadvantages of an LLC, LLC disadvantages, what are the disadvantages of an LLC, limited liability advantages and disadvantages, LLC benefits, benefits of an LLC, LLC definition, LLC meaning, LLC structure, what is an LLC, 2, what is a limited liability company, advantages of an LLC, limited liability protection,"+
+       "LLC bank account, LLC business account, a business bank account for your LLC, opening a business bank account for an LLC, LLC business bank account, opening a separate business bank account, it's recommended to set up a separate bank account,types of LLC, different types of LLC, which LLC type suits you best,"+
+       "Tailor Brands,LLC articles of organization, filing articles of organization, what are articles of organization, what are articles of organization for LLC,LLC cost, how much does it cost to start an LLC, business formation costs,LLC in SC, South Carolina LLC, LLC in South Carolina, How to get an LLC in SC, Starting an LLC in South Carolina, How to start an LLC in SC, How to form an LLC in South Carolina, Setting up an LLC in South Carolina,"+
+       "How to get an LLC, How to start an LLC, Start an LLC, Create an LLC, How to create an LLC, Starting an LLC, How to set up an LLC, Setting up an LLC, How to get an LLC, Register an LLC, Open an LLC, Opening an LLC, How to open an LLC, Form an LLC, How to form an LLC, Forming an LLC,dissolving an llc that was never used, how to close an llc, how to get rid of llc, how to get rid of an llc, how to dissolve my llc, how to close your llc, how do i dissolve an llc, how do you dissolve an llc,"+
+       "employer identification number (EIN), what is an EIN,operating agreement, what is an LLC operating agreement, operating agreement isn't mandatory but highly recommended,LLC laws differ by state, LLC state differentiation, each state has its own LLC laws,LLC New York cost, cost of LLC in NY, New York LLC annual fee, New York LLC cost, how much does an LLC cost in NY, NY LLC fees, New York LLC fee, how much does it cost to start an LLC in New York, how much does it cost to set up an LLC in New York, cheapest way to form an LLC in New York, NYS LLC filing fee,"+
+       "South Carolina LLC cost, cost of LLC in South Carolina, how much is an LLC in South Carolina, LLC cost South Carolina, how much does it cost to start an LLC in South Carolina, South Carolina LLC filing fee, South Carolina LLC fees, how much does it cost to set up an LLC in South Carolina,LLC cost in Texas, LLC fees in Texas, Texas LLC annual fees, Texas LLC annual fee, Texas LLc yearly fees, LLC cost Texas, cost to start an LLC in Texas, how much does an LLC cost in Texas, Texas LLC fee, Texas LLC filing fee, how much does it cost to get an LLC in Texas, how much does it cost to start an LLC in Texas, LLC Texas cost, Texas LLC annual fees,"+
+       "how much is a LLC in California, LLC in California cost, cost of LLC in California, how much to start an LLC in California, how much does an LLC cost in California, LLC cost in California, how much does it cost to start an LLC in California, LLC California cost,how much is an LLC in Florida, Florida LLC cost, Florida LLC cost, how much does it cost to get an LLC in Florida, LLC in Florida cost, how much does it cost to open an LLC in Florida, how much does it cost to start an LLC in Florida,LLC in Georgia, Georgia LLC, How to get an LLC in Georgia, Starting an LLC in Georgia, How to start an LLC in GA, How to start an LLC in Georgia, Start an LLC in Georgia, How to create an LLC in Georgia, Create an LLC in Georgia, How to form an LLC in Georgia, How to set up an LLC in Georgia,"+
+       "how much does it cost to start an LLC in Arizona, cost of LLC in Arizona, Arizona LLC cost, how much does an LLC cost in Arizona, how much is it to start an LLC in Arizona, LLC Arizona, creating an LLC in Arizona, Arizona LLC, Arizona LLC registration, how to get an LLC in arizona,how much does an LLC cost in Virginia, cost of an LLC in Virginia, Virginia LLC fees, Virginia LLC cost, how much does it cost to start an LLC in Virginia, how much does it cost to get an LLC in Virginia, creating an LLC in Virginia,"+
+       "how much does it cost to start an LLC in Georgia, Georgia LLC cost, cost of LLC in Georgia, how much does it cost to get an LLC in Georgia, how much does an LLC cost in Georgia, start an LLC in Georgia, start an LLC Georgia, Georgia LLC registration,Delaware LLC cost, how much to start an LLC in Delaware, cost of LLC in Delaware, how much does an LLC cost in Delaware, how much does it cost to file an LLC in Delaware, how much does it cost to start an LLC in Delaware, LLC in Delaware cost, LLC Delaware cost, Delaware LLC fees, Delaware LLC filing fee, open an LLC in Delaware, forming an LLC in Delaware, starting an LLC in Delaware,"+
+       "Florida LLC, FL LLC, LLC in FL, LLC in Florida, start an LLC in Florida, Start an LLC in FL, Register your LLC in Florida, Form an LLC in Florida,Delaware LLC, LLC in Delaware, start an LLC in Delaware, Register your LLC in Delaware, Form an LLC in Delaware,LLC NYC, starting an LLC in NY, how to start an LLC in NY, LLC in New York, how to form an LLC in NY, creating an LLC in NY, how to open an LLC in NY, open an LLC in New York, register an LLC in New York, how to open an LLC in New York,start an LLC in Virginia, starting an LLC in Virginia, how to get an LLC in Virginia, how to start an LLC in Virginia, creating an LLC in Virginia, create an LLC in Virginia, form an LLC in Virginia, how to create an LLC in Virginia, forming an LLC in Virginia,"+
+       "Texas LLC, LLC in Texas, TX LLC, start an LLC in Texas, Register your LLC in Texas, Form an LLC in Texas,register a business in California, how to register a business in California, setting up an LLC in California, start an LLC in California, how to start an LLC in California, how to create an LLC in California, register LLC in California, register an LLC in California, how to register an LLC in California, getting an LLC in California, starting an LLC in California, California LLC, CA LLC, LLC in CA, LLC in California, start an LLC in California, Start an LLC in CA, Register your LLC in California, Form an LLC in California,"+
+       "Ohio LLC, LLC in Ohio, How to get an LLC in Ohio, How to start an LLC in Ohio, Ohio LLC registration, Starting an LLC in Ohio, Creating an LLC in Ohio, Forming an LLC in Ohio, Apply for an LLC in Ohio, How to create an LLC in Ohio, How to form an LLC in Ohio, How to set up an LLC in Ohio,Illinois LLC, LLC in Illinois, How to get an LLC in Illinois, How to start an LLC in Illinois, Starting an LLC in Illinois, Illinois LLC registration, Start an LLC in Illinois, Creating an LLC in Illinois, LLC registration in Illinois, Create an LLC in Illinois, Register LLC in Illinois, Setting up an LLC in Illinois, Forming an LLC in Illinois, How to create an LLC in Illinois,LLC in PA, PA LLC, How to get an LLC in PA, How to get an LLC in Pennsylvania, Pansylvania LLC, How to start an LLC in PA, Starting an LLC in PA, Registering a business in PA, Register an LLC in PA online, Creating an LLC in PA, Create an LLC in PA, LLC in Pennsylvania, How to create an LLC in PA,"+
+       "LLC in NJ, NJ LLC, New Jersey LLC, New Jersey LLC registration, How to start an LLC in NJ, LLC in New Jersey, How to start an LLC in NJ, Register an LLC in New Jersey, Create an LLC in New Jersey, How to create an LLC in NJ,Michigan LLC, LLC in Michigan, How to start an LLC in Michigan, Starting an LLC in Michigan, Start an LLC in Michigan, Creating an LLC in Michigan, Create an LLC in Michigan, Apply for an LLC in Michigan, How to create an LLC in Michigan, How to form an LLC in Michigan, Forming an LLC in Michigan,LLC in NC, North Carolina LLC, How to get an LLC in NC, How to start an LLC in NC, Starting an LLC in NC, LLC in North Carolina, Creating an LLC in NC, Forming an LLC in NC, How to create an LLC in NC, Create an LLC in NC, How to stat an LLC in North Carolina,"
+
+       const dataImpulse = "residential proxies,mobile proxies, residential mobile proxies,ad verification proxies,sneaker proxies"
+
+
+       // add Airtable data here.....
+       const sitesName = [
+        {
+                siteName : "tailorbrands.com",
+                DA : 25,
+                DR : 35,
+                AnchorTags : "what is a registered agent, registered agent services, what is a statutory agent, what is a resident agent, choosing a registered agent for LLC, appoint a registered agent, how to choose a registered agent, what is an agent of process, registered agent, what is a registered agent, registered agent is a mandatory requirement, you have to appoint a registered agent,"+
+       "LLC for non-US residents, LLC for non-US citizens, LLC for non-residents, creating an LLC as a non-US citizen, how to start an LLC as a non-citizen,LLC taxes, pass-through taxation, how does LLC pay taxes,annual report for LLC, what is an annual report, annual report, annual reports can't be ignored,"+
+       "disadvantages of an LLC, LLC disadvantages, what are the disadvantages of an LLC, limited liability advantages and disadvantages, LLC benefits, benefits of an LLC, LLC definition, LLC meaning, LLC structure, what is an LLC, 2, what is a limited liability company, advantages of an LLC, limited liability protection,"+
+       "LLC bank account, LLC business account, a business bank account for your LLC, opening a business bank account for an LLC, LLC business bank account, opening a separate business bank account, it's recommended to set up a separate bank account,types of LLC, different types of LLC, which LLC type suits you best,"+
+       "Tailor Brands,LLC articles of organization, filing articles of organization, what are articles of organization, what are articles of organization for LLC,LLC cost, how much does it cost to start an LLC, business formation costs,LLC in SC, South Carolina LLC, LLC in South Carolina, How to get an LLC in SC, Starting an LLC in South Carolina, How to start an LLC in SC, How to form an LLC in South Carolina, Setting up an LLC in South Carolina,"+
+       "How to get an LLC, How to start an LLC, Start an LLC, Create an LLC, How to create an LLC, Starting an LLC, How to set up an LLC, Setting up an LLC, How to get an LLC, Register an LLC, Open an LLC, Opening an LLC, How to open an LLC, Form an LLC, How to form an LLC, Forming an LLC,dissolving an llc that was never used, how to close an llc, how to get rid of llc, how to get rid of an llc, how to dissolve my llc, how to close your llc, how do i dissolve an llc, how do you dissolve an llc,"+
+       "employer identification number (EIN), what is an EIN,operating agreement, what is an LLC operating agreement, operating agreement isn't mandatory but highly recommended,LLC laws differ by state, LLC state differentiation, each state has its own LLC laws,LLC New York cost, cost of LLC in NY, New York LLC annual fee, New York LLC cost, how much does an LLC cost in NY, NY LLC fees, New York LLC fee, how much does it cost to start an LLC in New York, how much does it cost to set up an LLC in New York, cheapest way to form an LLC in New York, NYS LLC filing fee,"+
+       "South Carolina LLC cost, cost of LLC in South Carolina, how much is an LLC in South Carolina, LLC cost South Carolina, how much does it cost to start an LLC in South Carolina, South Carolina LLC filing fee, South Carolina LLC fees, how much does it cost to set up an LLC in South Carolina,LLC cost in Texas, LLC fees in Texas, Texas LLC annual fees, Texas LLC annual fee, Texas LLc yearly fees, LLC cost Texas, cost to start an LLC in Texas, how much does an LLC cost in Texas, Texas LLC fee, Texas LLC filing fee, how much does it cost to get an LLC in Texas, how much does it cost to start an LLC in Texas, LLC Texas cost, Texas LLC annual fees,"+
+       "how much is a LLC in California, LLC in California cost, cost of LLC in California, how much to start an LLC in California, how much does an LLC cost in California, LLC cost in California, how much does it cost to start an LLC in California, LLC California cost,how much is an LLC in Florida, Florida LLC cost, Florida LLC cost, how much does it cost to get an LLC in Florida, LLC in Florida cost, how much does it cost to open an LLC in Florida, how much does it cost to start an LLC in Florida,LLC in Georgia, Georgia LLC, How to get an LLC in Georgia, Starting an LLC in Georgia, How to start an LLC in GA, How to start an LLC in Georgia, Start an LLC in Georgia, How to create an LLC in Georgia, Create an LLC in Georgia, How to form an LLC in Georgia, How to set up an LLC in Georgia,"+
+       "how much does it cost to start an LLC in Arizona, cost of LLC in Arizona, Arizona LLC cost, how much does an LLC cost in Arizona, how much is it to start an LLC in Arizona, LLC Arizona, creating an LLC in Arizona, Arizona LLC, Arizona LLC registration, how to get an LLC in arizona,how much does an LLC cost in Virginia, cost of an LLC in Virginia, Virginia LLC fees, Virginia LLC cost, how much does it cost to start an LLC in Virginia, how much does it cost to get an LLC in Virginia, creating an LLC in Virginia,"+
+       "how much does it cost to start an LLC in Georgia, Georgia LLC cost, cost of LLC in Georgia, how much does it cost to get an LLC in Georgia, how much does an LLC cost in Georgia, start an LLC in Georgia, start an LLC Georgia, Georgia LLC registration,Delaware LLC cost, how much to start an LLC in Delaware, cost of LLC in Delaware, how much does an LLC cost in Delaware, how much does it cost to file an LLC in Delaware, how much does it cost to start an LLC in Delaware, LLC in Delaware cost, LLC Delaware cost, Delaware LLC fees, Delaware LLC filing fee, open an LLC in Delaware, forming an LLC in Delaware, starting an LLC in Delaware,"+
+       "Florida LLC, FL LLC, LLC in FL, LLC in Florida, start an LLC in Florida, Start an LLC in FL, Register your LLC in Florida, Form an LLC in Florida,Delaware LLC, LLC in Delaware, start an LLC in Delaware, Register your LLC in Delaware, Form an LLC in Delaware,LLC NYC, starting an LLC in NY, how to start an LLC in NY, LLC in New York, how to form an LLC in NY, creating an LLC in NY, how to open an LLC in NY, open an LLC in New York, register an LLC in New York, how to open an LLC in New York,start an LLC in Virginia, starting an LLC in Virginia, how to get an LLC in Virginia, how to start an LLC in Virginia, creating an LLC in Virginia, create an LLC in Virginia, form an LLC in Virginia, how to create an LLC in Virginia, forming an LLC in Virginia,"+
+       "Texas LLC, LLC in Texas, TX LLC, start an LLC in Texas, Register your LLC in Texas, Form an LLC in Texas,register a business in California, how to register a business in California, setting up an LLC in California, start an LLC in California, how to start an LLC in California, how to create an LLC in California, register LLC in California, register an LLC in California, how to register an LLC in California, getting an LLC in California, starting an LLC in California, California LLC, CA LLC, LLC in CA, LLC in California, start an LLC in California, Start an LLC in CA, Register your LLC in California, Form an LLC in California,"+
+       "Ohio LLC, LLC in Ohio, How to get an LLC in Ohio, How to start an LLC in Ohio, Ohio LLC registration, Starting an LLC in Ohio, Creating an LLC in Ohio, Forming an LLC in Ohio, Apply for an LLC in Ohio, How to create an LLC in Ohio, How to form an LLC in Ohio, How to set up an LLC in Ohio,Illinois LLC, LLC in Illinois, How to get an LLC in Illinois, How to start an LLC in Illinois, Starting an LLC in Illinois, Illinois LLC registration, Start an LLC in Illinois, Creating an LLC in Illinois, LLC registration in Illinois, Create an LLC in Illinois, Register LLC in Illinois, Setting up an LLC in Illinois, Forming an LLC in Illinois, How to create an LLC in Illinois,LLC in PA, PA LLC, How to get an LLC in PA, How to get an LLC in Pennsylvania, Pansylvania LLC, How to start an LLC in PA, Starting an LLC in PA, Registering a business in PA, Register an LLC in PA online, Creating an LLC in PA, Create an LLC in PA, LLC in Pennsylvania, How to create an LLC in PA,"+
+       "LLC in NJ, NJ LLC, New Jersey LLC, New Jersey LLC registration, How to start an LLC in NJ, LLC in New Jersey, How to start an LLC in NJ, Register an LLC in New Jersey, Create an LLC in New Jersey, How to create an LLC in NJ,Michigan LLC, LLC in Michigan, How to start an LLC in Michigan, Starting an LLC in Michigan, Start an LLC in Michigan, Creating an LLC in Michigan, Create an LLC in Michigan, Apply for an LLC in Michigan, How to create an LLC in Michigan, How to form an LLC in Michigan, Forming an LLC in Michigan,LLC in NC, North Carolina LLC, How to get an LLC in NC, How to start an LLC in NC, Starting an LLC in NC, LLC in North Carolina, Creating an LLC in NC, Forming an LLC in NC, How to create an LLC in NC, Create an LLC in NC, How to stat an LLC in North Carolina,"
+        },
+
+        {
+                siteName : "impulse.com",
+        }
+       ]
+
+       /*
+       This will be Added when all the other Data is added;
+
+       const newOption1 = document.createElement('option');
+            newOption1.value = '3';
+            newOption1.text = 'Option 3';
+
+            const newOption2 = document.createElement('option');
+            newOption2.value = '4';
+            newOption2.text = 'Option 4';
+
+            // Add new options to the select element
+            targetSite.add(newOption1);
+            targetSite.add(newOption2);
+
+       */
+       let firstTime = true;
+
+       var num = Number(totalTabs.value);
+       var increaseNumber = 0
+
+function setValues(){
+
+         let siteSelected = targetSite.value;
+      
+       if(siteSelected === "newOldStamp"){
+        var word = newOldStamp.split(",")
+       }else{
+        var word = tailorBrand.split(",")
+       }
+       
+       if(siteSelected !=="none"){
+       runLoopTab(siteSelected,word,siteSelected);
+        }else{
+        message.innerHTML = "Select the Target Site First"
+       }
+
+       }
+ var loopRun = 0;
+ var endLoop = false;
+ 
+       function runLoopTab(siteSelected,word,siteSelected){
+      
+
+        for(let i = loopRun; i <= word.length-1;i++){
+
+                if(endLoop){
+                       message.innerHTML = `Enchor tags Ended for ${siteSelected}`
+                        break;
+                }
+                if(i == num){ 
+                       
+                        loopRun = i;
+                        num += 2;
+                             
+                        break;
+                }
+       
+                console.log(i , word.length,endLoop);
+                
+        // create the Google search URL
+         const searchUrl = `https://www.google.com/search?q="${word[i]}"":site:${domainName.value}`;
+         window.open(searchUrl,'_blank');
+
+        if(i == word.length -1 ){
+                console.log("end loop");
+                
+               endLoop = true;
+        }
+       }
+      
+
+
+       }
+
+       button.addEventListener('click',() =>firstTime? setValues() : runLoopTab());
+
+
+      
+
+ 
+       
+      </script>
+</body>
+</html>
