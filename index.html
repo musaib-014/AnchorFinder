@@ -202,7 +202,13 @@ function setValues(){
       
        if(siteSelected === "newOldStamp"){
         var word = newOldStamp.split(",")
-       }else{
+       }else if(siteSelected ==="dataImpulse"){var word = dataImpulse.split(",")}
+               else if(siteSelected ==="Quoleady"){var word = Quoleady.split(",")}
+                       else if(siteSelected ==="Thecmo"){var word = Thecmo.split(",")}
+                               else if(siteSelected ==="salesrobot"){var word = salesrobot.split(",")}
+                               else if(siteSelected ==="linksmanagement"){var word = linksmanagement.split(",")}
+                               else if(siteSelected ==="mysignature"){var word = mysignature.split(",")}
+       else{
         var word = tailorBrand.split(",")
        }
        
